@@ -1,2 +1,6 @@
+# Vim
+*.swp
+
+# bundler
 .bundle/
 vendor/
