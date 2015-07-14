@@ -9,5 +9,7 @@ end
 post "/" do
   content_type :json
   headers "Access-Control-Allow-Origin"  => "*"
-  CommandExecutor.execute(request)
+  parsedRequest = JSON.parse(request.body.read)
+  commandOutput = CommandExecutor.execute(parsedRequest["command"])
+  JSON.generate({ :output => commandOutput })
 end
