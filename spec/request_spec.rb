@@ -18,25 +18,33 @@ describe "tourette" do
   describe "POST /" do
 
     context "valid JSON request" do
+
       before do
         post "/", example_json_request
       end
+
       it "responds with 200 OK" do
         expect(last_response.status).to eql(200)
       end
-      it "return the correct response" do
+
+      it "returns the correct response" do
         expect(last_response.body).to eql(example_json_reponse)
       end
+
     end
 
     context "invalid request" do
+
       before do
         post "/", example_invalid_request
       end
-      it "responds with 500 Internal Server Error" do
-        expect(last_response.status).to eql(500)
+
+      it "responds with 400 Bad Request" do
+        expect(last_response.status).to eql(400)
       end
+
     end
 
   end
+
 end
